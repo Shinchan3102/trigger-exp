@@ -1,0 +1,27 @@
+{
+  "name": "@trigger-exp/api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file=.env src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "3.0.47",
+    "@ai-sdk/openai": "3.0.34",
+    "@hono/node-server": "^1.14.0",
+    "@trigger.dev/sdk": "0.0.0-chat-prerelease-20260415152704",
+    "ai": "6.0.101",
+    "better-sqlite3": "^11.8.0",
+    "drizzle-orm": "^0.44.0",
+    "hono": "^4.10.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

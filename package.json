@@ -1,0 +1,16 @@
+{
+  "name": "trigger-exp",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "db:migrate": "bun run --cwd packages/api tsx src/db/migrate.ts",
+    "trigger:dev": "cd packages/api && bun x trigger.dev@0.0.0-chat-prerelease-20260415152704 dev"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0"
+  },
+  "packageManager": "bun@1.3.4"
+}
