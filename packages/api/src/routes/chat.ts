@@ -1,7 +1,10 @@
 import { Hono } from "hono";
 import { chat } from "@trigger.dev/sdk/ai";
+import { auth } from "@trigger.dev/sdk/v3";
 import type { agentChat } from "../trigger/agent-chat.js";
 import { listChats, deleteChat, ensureChat, updateChat } from "../db/queries.js";
+
+const CHAT_EXAMPLE_PAT_TTL = "15m";
 
 const app = new Hono();
 
@@ -24,7 +27,13 @@ app.post("/agent/renew-token", async (c) => {
   try {
     const { runId } = await c.req.json<{ runId: string }>();
     console.log(`[route] Renewing token for runId=${runId}`);
-    const token = await chat.createAccessToken<typeof agentChat>("agent-chat");
+    const token = await auth.createPublicToken({
+      scopes: {
+        read: { runs: runId },
+        write: { inputStreams: runId },
+      },
+      expirationTime: CHAT_EXAMPLE_PAT_TTL,
+    });
     console.log("[route] Token renewed successfully");
     return c.json({ publicAccessToken: token });
   } catch (e) {
