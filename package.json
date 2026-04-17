@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "db:migrate": "bun run --cwd packages/api tsx src/db/migrate.ts",
-    "trigger:dev": "cd packages/api && bun x trigger.dev@0.0.0-chat-prerelease-20260415152704 dev"
+    "trigger:dev": "bun run --cwd packages/api dev:worker"
   },
   "devDependencies": {
     "turbo": "^2.5.0",

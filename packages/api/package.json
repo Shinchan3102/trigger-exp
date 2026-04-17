@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch --env-file=.env src/index.ts",
+    "dev:worker": "sh -c 'set -a && . ./.env && trigger dev'",
+    "dev:both": "concurrently \"bun run dev\" \"bun run dev:worker\"",
     "build": "tsc"
   },
   "dependencies": {
@@ -20,7 +22,9 @@
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
+    "concurrently": "^9.2.1",
     "drizzle-kit": "^0.31.0",
+    "trigger.dev": "0.0.0-chat-prerelease-20260415152704",
     "tsx": "^4.19.0",
     "typescript": "^5.8.0"
   }

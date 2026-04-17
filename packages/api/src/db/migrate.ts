@@ -1,10 +1,8 @@
 import Database from "better-sqlite3";
 import { resolve, dirname } from "path";
-import { fileURLToPath } from "url";
 import { mkdirSync } from "fs";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const dbPath = resolve(__dirname, "../../data/chat.db");
+const dbPath = process.env.DB_PATH || resolve(process.cwd(), "data/chat.db");
 
 mkdirSync(dirname(dbPath), { recursive: true });
 
