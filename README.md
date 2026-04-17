@@ -100,13 +100,6 @@ bun run dev
 | `bun db:migrate` | root | Create/migrate the SQLite database |
 | `bun trigger:dev` | root | Shortcut for the Trigger.dev worker |
 
-### Troubleshooting
-
-- **`ECONNREFUSED` on `/api/...`** — The API server isn't running. Start it with `cd packages/api && bun run dev`.
-- **`no such table: chat`** — Run `bun db:migrate` to create the database tables.
-- **`EADDRINUSE: port 3001`** — Kill the existing process: `lsof -ti :3001 | xargs kill -9`
-- **Trigger worker build error (`ENOENT .trigger/tmp/store`)** — Run `mkdir -p packages/api/.trigger/tmp/store` and retry.
-
 ## Usage
 
 1. Open http://localhost:5173
